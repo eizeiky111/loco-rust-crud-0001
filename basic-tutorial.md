@@ -17,6 +17,7 @@ myapp/
 
 5. cargo fmt --all -- --check ( checking style )
 6. cargo fmt ( to run auto fix style )
+7. cargo clippy --all-features -- -D warnings -W clippy::pedantic -W clippy::nursery -W rust-2018-idioms
 7. cargo clippy --fix --lib -p loco_crud ( implement suggestion )
 8. cargo test --all-features --all ( running testcase   )
 
