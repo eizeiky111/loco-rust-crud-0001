@@ -15,6 +15,10 @@ first time user run this command:
 myapp/
 
 
+5. cargo fmt --all -- --check ( checking style )
+6. cargo fmt ( to run auto fix style )
+
+
 =================================================================================
 cargo watch -x run -- cargo loco start --> auto compiled
 

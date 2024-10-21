@@ -1,5 +1,5 @@
-use loco_rs::cli;
 use loco_crud::app::App;
+use loco_rs::cli;
 use migration::Migrator;
 
 #[tokio::main]

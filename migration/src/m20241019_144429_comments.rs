@@ -39,9 +39,7 @@ enum Comments {
     Id,
     Content,
     ArticleId,
-    
 }
-
 
 #[derive(DeriveIden)]
 enum Articles {

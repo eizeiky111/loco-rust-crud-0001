@@ -1,6 +1,9 @@
+use loco_crud::{
+    app::App,
+    models::_entities::articles::{self},
+};
 #[allow(unused_imports)]
 use loco_rs::{cli::playground, prelude::*};
-use loco_crud::{app::App, models::_entities::articles::{self}};
 
 #[tokio::main]
 async fn main() -> loco_rs::Result<()> {
@@ -22,7 +25,6 @@ async fn main() -> loco_rs::Result<()> {
     // add this:
     let res = articles::Entity::find().all(&ctx.db).await.unwrap();
     println!("{:?}", res);
-
 
     Ok(())
 }

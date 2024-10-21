@@ -31,7 +31,4 @@ enum Articles {
     Id,
     Title,
     Content,
-    
 }
-
-

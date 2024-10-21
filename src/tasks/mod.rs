@@ -1,4 +1,4 @@
 pub mod seed;
 
-pub mod user_report;
 pub mod seed_articles;
+pub mod user_report;
