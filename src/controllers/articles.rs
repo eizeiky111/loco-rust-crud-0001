@@ -34,7 +34,7 @@ async fn load_item(ctx: &AppContext, id: i32) -> Result<Model> {
 /// Lists articles.
 ///
 /// # Errors
-/// 
+///
 /// Returns an error if the articles cannot be retrieved due to [reason].
 ///
 /// # Arguments
@@ -47,7 +47,7 @@ pub async fn list(State(ctx): State<AppContext>) -> Result<Response> {
 /// Lists articles.
 ///
 /// # Errors
-/// 
+///
 /// Returns an error if the articles cannot be retrieved due to [reason].
 ///
 /// # Arguments
@@ -79,7 +79,7 @@ pub async fn list_b(State(ctx): State<AppContext>) -> Result<Response> {
 /// Lists articles.
 ///
 /// # Errors
-/// 
+///
 /// Returns an error if the articles cannot be retrieved due to [reason].
 ///
 /// # Arguments
@@ -87,7 +87,7 @@ pub async fn list_b(State(ctx): State<AppContext>) -> Result<Response> {
 /// * `ctx` - The application context.
 #[allow(clippy::unnecessary_struct_initialization)]
 pub async fn add(State(ctx): State<AppContext>, Json(params): Json<Params>) -> Result<Response> {
-    let mut item = ActiveModel{
+    let mut item = ActiveModel {
         ..Default::default()
     };
     params.update(&mut item);
@@ -98,7 +98,7 @@ pub async fn add(State(ctx): State<AppContext>, Json(params): Json<Params>) -> R
 /// Lists articles.
 ///
 /// # Errors
-/// 
+///
 /// Returns an error if the articles cannot be retrieved due to [reason].
 ///
 /// # Arguments
@@ -116,11 +116,10 @@ pub async fn update(
     format::json(item)
 }
 
-
 /// Lists articles.
 ///
 /// # Errors
-/// 
+///
 /// Returns an error if the articles cannot be retrieved due to [reason].
 ///
 /// # Arguments
@@ -134,7 +133,7 @@ pub async fn remove(Path(id): Path<i32>, State(ctx): State<AppContext>) -> Resul
 /// Lists articles.
 ///
 /// # Errors
-/// 
+///
 /// Returns an error if the articles cannot be retrieved due to [reason].
 ///
 /// # Arguments
@@ -147,7 +146,7 @@ pub async fn get_one(Path(id): Path<i32>, State(ctx): State<AppContext>) -> Resu
 /// Lists articles.
 ///
 /// # Errors
-/// 
+///
 /// Returns an error if the articles cannot be retrieved due to [reason].
 ///
 /// # Arguments
