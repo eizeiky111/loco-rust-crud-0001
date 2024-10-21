@@ -6,7 +6,7 @@ use serial_test::serial;
 #[serial]
 async fn can_list() {
     testing::request::<App, _, _>(|request, _ctx| async move {
-        let res = request.get("/comment/").await;
+        let res = request.get("/comments/").await;
         assert_eq!(res.status_code(), 200);
 
         // you can assert content like this:
