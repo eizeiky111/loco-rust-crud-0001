@@ -85,8 +85,11 @@ pub async fn list_b(State(ctx): State<AppContext>) -> Result<Response> {
 /// # Arguments
 ///
 /// * `ctx` - The application context.
+#[allow(clippy::unnecessary_struct_initialization)]
 pub async fn add(State(ctx): State<AppContext>, Json(params): Json<Params>) -> Result<Response> {
-    let mut item = Default::default();
+    let mut item = ActiveModel{
+        ..Default::default()
+    };
     params.update(&mut item);
     let item: Model = item.insert(&ctx.db).await?;
     format::json(item)
