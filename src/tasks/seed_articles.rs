@@ -25,7 +25,7 @@ impl Task for SeedArticles {
 
         for _ in 0..num_articles {
             let title = format!("Dummy Article {}", rng.gen_range(1..=100));
-            let content = format!("This is the content of {}", title);
+            let content = format!("This is the content of {title}");
 
             let now: DateTime<FixedOffset> = Utc::now().with_timezone(
                 &FixedOffset::east_opt(999).unwrap_or(FixedOffset::east_opt(0).unwrap()),

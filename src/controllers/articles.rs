@@ -31,10 +31,28 @@ async fn load_item(ctx: &AppContext, id: i32) -> Result<Model> {
     item.ok_or_else(|| Error::NotFound)
 }
 
+/// Lists articles.
+///
+/// # Errors
+/// 
+/// Returns an error if the articles cannot be retrieved due to [reason].
+///
+/// # Arguments
+///
+/// * `ctx` - The application context.
 pub async fn list(State(ctx): State<AppContext>) -> Result<Response> {
     format::json(Entity::find().all(&ctx.db).await?)
 }
 
+/// Lists articles.
+///
+/// # Errors
+/// 
+/// Returns an error if the articles cannot be retrieved due to [reason].
+///
+/// # Arguments
+///
+/// * `ctx` - The application context.
 pub async fn list_b(State(ctx): State<AppContext>) -> Result<Response> {
     // Fetch all items from the database
     let items = Entity::find().all(&ctx.db).await?;
@@ -58,15 +76,31 @@ pub async fn list_b(State(ctx): State<AppContext>) -> Result<Response> {
     format::json(response)
 }
 
+/// Lists articles.
+///
+/// # Errors
+/// 
+/// Returns an error if the articles cannot be retrieved due to [reason].
+///
+/// # Arguments
+///
+/// * `ctx` - The application context.
 pub async fn add(State(ctx): State<AppContext>, Json(params): Json<Params>) -> Result<Response> {
-    let mut item = ActiveModel {
-        ..Default::default()
-    };
+    let mut item = Default::default();
     params.update(&mut item);
     let item: Model = item.insert(&ctx.db).await?;
     format::json(item)
 }
 
+/// Lists articles.
+///
+/// # Errors
+/// 
+/// Returns an error if the articles cannot be retrieved due to [reason].
+///
+/// # Arguments
+///
+/// * `ctx` - The application context.
 pub async fn update(
     Path(id): Path<i32>,
     State(ctx): State<AppContext>,
@@ -79,15 +113,43 @@ pub async fn update(
     format::json(item)
 }
 
+
+/// Lists articles.
+///
+/// # Errors
+/// 
+/// Returns an error if the articles cannot be retrieved due to [reason].
+///
+/// # Arguments
+///
+/// * `ctx` - The application context.
 pub async fn remove(Path(id): Path<i32>, State(ctx): State<AppContext>) -> Result<Response> {
     load_item(&ctx, id).await?.delete(&ctx.db).await?;
     format::empty()
 }
 
+/// Lists articles.
+///
+/// # Errors
+/// 
+/// Returns an error if the articles cannot be retrieved due to [reason].
+///
+/// # Arguments
+///
+/// * `ctx` - The application context.
 pub async fn get_one(Path(id): Path<i32>, State(ctx): State<AppContext>) -> Result<Response> {
     format::json(load_item(&ctx, id).await?)
 }
 
+/// Lists articles.
+///
+/// # Errors
+/// 
+/// Returns an error if the articles cannot be retrieved due to [reason].
+///
+/// # Arguments
+///
+/// * `ctx` - The application context.
 pub async fn comments(Path(id): Path<i32>, State(ctx): State<AppContext>) -> Result<Response> {
     let item = load_item(&ctx, id).await?;
     let comments = item.find_related(comments::Entity).all(&ctx.db).await?;
